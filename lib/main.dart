@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'profile.dart';
 import 'cart.dart';
-import 'profil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,23 +37,22 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-
+      
       body: Column(
         children: [
           // Bagian kategori
-          const Padding(
+         const Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CategoryItem(isSelected: true, iconPath: 'assets/burger.jpg'),
                 CategoryItem(isSelected: false, iconPath: 'assets/burger.jpg'),
-                CategoryItem(
-                    isSelected: false, iconPath: 'assets/teh_botol.jpg'),
+                CategoryItem(isSelected: false, iconPath: 'assets/teh_botol.jpg'),
               ],
             ),
           ),
-
+          
           // Judul dan list makanan
           Expanded(
             child: Column(
@@ -70,12 +68,10 @@ class HomePage extends StatelessWidget {
                 // Bagian Grid
                 Expanded(
                   child: GridView.count(
-                    crossAxisCount: MediaQuery.of(context).size.width > 600
-                        ? 4
-                        : 2, // Responsif
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8.0,
-                    childAspectRatio: 2 / 2.5,
+                  crossAxisCount: MediaQuery.of(context).size.width > 600 ? 4 : 2,  // Responsif
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                  childAspectRatio: 2 / 2.5, 
                     padding: const EdgeInsets.all(15.0),
                     children: const [
                       FoodItem(
@@ -141,12 +137,10 @@ class HomePage extends StatelessWidget {
         currentIndex: 0,
         onTap: (index) {
           if (index == 1) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const Cart()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
           }
           if (index == 2) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const Pfl()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Pfl()));
           }
         },
       ),
@@ -159,8 +153,7 @@ class CategoryItem extends StatelessWidget {
   final bool isSelected;
   final String iconPath;
 
-  const CategoryItem(
-      {super.key, required this.isSelected, required this.iconPath});
+  const CategoryItem({super.key, required this.isSelected, required this.iconPath});
 
   @override
   Widget build(BuildContext context) {
@@ -185,11 +178,7 @@ class FoodItem extends StatelessWidget {
   final String name;
   final String price;
 
-  const FoodItem(
-      {super.key,
-      required this.imagePath,
-      required this.name,
-      required this.price});
+  const FoodItem({super.key, required this.imagePath, required this.name, required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -202,8 +191,7 @@ class FoodItem extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child:
-                Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+            child: Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -221,4 +209,3 @@ class FoodItem extends StatelessWidget {
     );
   }
 }
-// profil dan menu navigition
