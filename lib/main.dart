@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile.dart';
 import 'cart.dart';
-
+import 'profile_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -68,14 +68,19 @@ class HomePage extends StatelessWidget {
           icon: const Icon(Icons.menu, color: Colors.black),
           onPressed: () {},
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
+       actions: [
+  IconButton(
+    icon: const Icon(Icons.person, color: Colors.black),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfilePage()),
+      );
+    },
+  ),
+],
       ),
-
+      
       body: Column(
         children: [
           // Bagian kategori
@@ -258,3 +263,4 @@ class FoodItem extends StatelessWidget {
     );
   }
 }
+//profile
