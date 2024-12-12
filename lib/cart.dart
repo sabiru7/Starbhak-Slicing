@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slicing/done_page.dart';
 import 'package:slicing/main.dart';
 
 void main() => runApp(const Cart());
@@ -65,7 +66,7 @@ class _CartPageState extends State<CartPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MyApp()),
+              MaterialPageRoute(builder: (context) => Home()),
             );
           },
         ),
@@ -106,7 +107,7 @@ class _CartPageState extends State<CartPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const MyApp()),
+                        MaterialPageRoute(builder: (context) => DonePage()),
                       );
                     },
                     child: const Text('Checkout'),

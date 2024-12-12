@@ -49,7 +49,7 @@ class _ProductPageState extends State<ProductPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MyApp()),
+              MaterialPageRoute(builder: (context) => Home()),
             );
           },
         ),

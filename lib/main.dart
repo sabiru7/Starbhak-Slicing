@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+//splash screen
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CategoryItem(isSelected: true, iconPath: 'assets/burger.jpg'),
-                CategoryItem(isSelected: false, iconPath: 'assets/burger.jpg'),
+                CategoryItem(isSelected: false, iconPath: 'assets/icecream.jpeg'),
                 CategoryItem(
                     isSelected: false, iconPath: 'assets/teh_botol.jpg'),
               ],
@@ -121,19 +121,19 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.all(15.0),
                     children: const [
                       FoodItem(
-                        imagePath: 'assets/burger.jpg',
+                        imagePath: 'assets/bigburger.jpeg',
                         name: 'Burger King large',
-                        price: 'Rp. 50.000,00',
+                        price: 'Rp. 75.000,00',
                       ),
                       FoodItem(
                         imagePath: 'assets/burger.jpg',
-                        name: 'Burger King medium',
+                        name: 'Burger King Small',
                         price: 'Rp. 50.000,00',
                       ),
                       FoodItem(
-                        imagePath: 'assets/burger.jpg',
-                        name: 'Burger King small',
-                        price: 'Rp. 50.000,00',
+                        imagePath: 'assets/icecream.jpeg',
+                        name: 'Ice Cream BK',
+                        price: 'Rp. 23.000,00',
                       ),
                       FoodItem(
                         imagePath: 'assets/teh_botol.jpg',
@@ -144,16 +144,6 @@ class HomePage extends StatelessWidget {
                         imagePath: 'assets/cocacola.jpg',
                         name: 'Coca Cola large',
                         price: 'Rp. 8.000,00',
-                      ),
-                      FoodItem(
-                        imagePath: 'assets/cocacola.jpg',
-                        name: 'Coca Cola medium',
-                        price: 'Rp. 6.000,00',
-                      ),
-                      FoodItem(
-                        imagePath: 'assets/cocacola.jpg',
-                        name: 'Coca Cola small',
-                        price: 'Rp. 4.000,00',
                       ),
                     ],
                   ),
@@ -251,11 +241,20 @@ class FoodItem extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(price),
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Align(
               alignment: Alignment.centerRight,
-              child: Icon(Icons.add, color: Colors.green),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Cart(
+                    )),
+                  );
+                },
+                child: Text('Tambah'),
+              ),
             ),
           ),
         ],
@@ -263,4 +262,3 @@ class FoodItem extends StatelessWidget {
     );
   }
 }
-//profile
