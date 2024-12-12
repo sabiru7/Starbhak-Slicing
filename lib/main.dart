@@ -122,12 +122,12 @@ class HomePage extends StatelessWidget {
                     children: const [
                       FoodItem(
                         imagePath: 'assets/bigburger.jpeg',
-                        name: 'Burger King large',
+                        name: 'Burger large',
                         price: 'Rp. 75.000,00',
                       ),
                       FoodItem(
                         imagePath: 'assets/burger.jpg',
-                        name: 'Burger King Small',
+                        name: 'Burger Small',
                         price: 'Rp. 50.000,00',
                       ),
                       FoodItem(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slicing/main.dart';
+import 'package:slicing/profile_page.dart';
 import 'data.dart';
 
 void main() {
@@ -8,7 +9,7 @@ void main() {
 
 class Pfl extends StatelessWidget {
   const Pfl({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -53,12 +54,21 @@ class _ProductPageState extends State<ProductPage> {
             );
           },
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
+      actions: [
+  IconButton(
+    icon: const Icon(Icons.person, color: Colors.black),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ProfilePage()),
+      );
+    },
+  ),
+],
+        title: const Text(
+          'Produk',
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -75,8 +85,12 @@ class _ProductPageState extends State<ProductPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
+                backgroundColor: Colors.blue,
               ),
-              child: const Text('Add Data +'),
+              child: const Text(
+                'Tambah Data +',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             const SizedBox(height: 20),
             Expanded(
@@ -128,10 +142,11 @@ class ProductItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
-          Image.network(
+          Image.asset(
             imagePath,
             width: 50,
             height: 50,
+            fit: BoxFit.cover,
           ),
           const SizedBox(width: 16),
           Expanded(

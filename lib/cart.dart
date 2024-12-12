@@ -24,16 +24,16 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  // Cart items with quantity and price
+  // Cart items dengan quantity dan price
   final List<CartItem> _cartItems = [
     CartItem(name: 'Burger King Medium', price: 50000, quantity: 1, imagePath: 'assets/burger.jpg'),
-    CartItem(name: 'Teh Botol', price: 4000, quantity: 1, imagePath: 'assets/teh_botol.jpg'),
-    CartItem(name: 'Burger King Small', price: 35000, quantity: 1, imagePath: 'assets/burger.jpg'),
+    CartItem(name: 'Ice Cream BK', price: 23000, quantity: 1, imagePath: 'assets/icecream.jpeg'),
+    CartItem(name: 'Burger Large', price: 50000, quantity: 1, imagePath: 'assets/bigburger.jpeg'),
   ];
 
   int get _total {
     int subtotal = _cartItems.fold(0, (sum, item) => sum + item.price * item.quantity);
-    int tax = (subtotal * 0.11).round(); // Calculate 11% PPN
+    int tax = (subtotal * 0.12).round(); 
     return subtotal + tax;
   }
 
@@ -71,6 +71,7 @@ class _CartPageState extends State<CartPage> {
           },
         ),
         title: const Text('Cart'),
+        backgroundColor: const Color.fromARGB(255, 74, 244, 221),
       ),
       body: Column(
         children: [
@@ -111,6 +112,10 @@ class _CartPageState extends State<CartPage> {
                       );
                     },
                     child: const Text('Checkout'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+                      padding: const EdgeInsets.all(16.0),
+                    ),
                   ),
                 ),
               ],
@@ -122,27 +127,31 @@ class _CartPageState extends State<CartPage> {
   }
 
   Widget _buildCartItem(String title, int price, int quantity, String imagePath, VoidCallback onIncrement, VoidCallback onDecrement, VoidCallback onDelete) {
-    return ListTile(
-      leading: Image.asset(imagePath),
-      title: Text(title),
-      subtitle: Text('Rp ${price * quantity}'),
-      trailing: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.remove_circle_outline),
-            onPressed: onDecrement,
-          ),
-          Text(quantity.toString()), // Display quantity
-          IconButton(
-            icon: const Icon(Icons.add_circle_outline),
-            onPressed: onIncrement,
-          ),
-          IconButton(
-            icon: const Icon(Icons.delete, color: Colors.red),
-            onPressed: onDelete,
-          ),
-        ],
+    return Card(
+      elevation: 4,
+      margin: const EdgeInsets.all(8.0),
+      child: ListTile(
+        leading: Image.asset(imagePath),
+        title: Text(title),
+        subtitle: Text('Rp ${price * quantity}'),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.remove_circle_outline),
+              onPressed: onDecrement,
+            ),
+            Text(quantity.toString()), // Display quantity
+            IconButton(
+              icon: const Icon(Icons.add_circle_outline),
+              onPressed: onIncrement,
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete, color: Colors.red),
+              onPressed: onDelete,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -151,8 +160,8 @@ class _CartPageState extends State<CartPage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
-        Text(value, style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal)),
+        Text(label, style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal, fontSize: 16)),
+        Text(value, style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal, fontSize: 16)),
       ],
     );
   }
